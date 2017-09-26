@@ -1,0 +1,102 @@
+package edu.cofc.csci230;
+import java.util.Scanner;
+
+public class DNA {
+	
+	public static void main(String args[]) 
+    {
+		Scanner scan = new Scanner(System.in); 
+		
+		System.out.print("Enter upper DNA strand: ");
+		String upperStr = scan.nextLine();
+		int upperLength = upperStr.length();
+		
+		System.out.print("Enter lower DNA strand: ");
+		String lowerStr = scan.nextLine();
+		int lowerLength = lowerStr.length();
+		
+		System.out.print("\n");
+		
+		
+		
+		if(upperStr.isEmpty() || lowerStr.isEmpty())	{
+			System.out.print("The entered upper strand or lower strand is not defined ");
+			System.out.print("... Exiting program");
+			System.exit(0);
+		}
+		
+				
+		if(upperLength != lowerLength) {
+			System.out.print("The entered lower and upper strands do not have the same ");
+			System.out.print("number of chemical bases ... Exiting program");
+			System.exit(0);
+		}
+		
+		for(int x=0; x<upperLength; x++) {
+			char chemUp = upperStr.charAt(x);
+			char chemLow = lowerStr.charAt(x);
+			
+			if(chemUp!='A' && chemUp!='T' && chemUp!='G' && chemUp!='C') {
+				System.out.println("The entered upper and lower strands must only contain ");
+				System.out.println("combinations of A, G, C, or T ... Exiting program");
+				System.exit(0);
+			}
+			else if(chemLow!='A' && chemLow!='T' && chemLow!='G' && chemLow!='C') {
+				System.out.println("The entered upper and lower strands must only contain ");
+				System.out.println("combinations of A, G, C, or T ... Exiting program");
+				System.exit(0);
+			}
+			else {
+				continue;
+			}
+		}
+		for(int x=0; x<upperLength; x++) {
+			char upArr[] = upperStr.toCharArray();
+			char lowArr[] = lowerStr.toCharArray();
+			
+			char chemUp = upperStr.charAt(x);
+			char chemLow = lowerStr.charAt(x);
+			
+			if(chemUp=='A' && chemLow!='T') {
+				lowArr[x]='t';
+				/*if(x==upperLength-1) {
+					System.out.print(upArr);
+					System.out.print(lowArr);
+					System.exit(0);
+				}*/
+			}
+			else if(chemUp=='T' && chemLow!='A') {
+				lowArr[x]='a';
+				/*if(x==upperLength-1) {
+					System.out.print(upperStr+lowerStr);
+					System.out.print("\n");
+					System.exit(0);
+				}*/
+			}
+			else if(chemUp=='G' && chemLow!='C') {
+				lowArr[x]='c';
+				/*if(x==upperLength-1) {
+					System.out.print(upperStr+lowerStr);
+					System.out.print("\n");
+					System.exit(0);
+				}*/
+			}
+			else if(chemUp=='C' && chemLow!='G') {
+				lowArr[x]='g';
+				/*if(x==upperLength-1) {
+					System.out.print(upperStr+lowerStr);
+					System.out.print("\n");
+					System.exit(0);
+				}*/
+			}
+			else if(chemUp=='A' && chemLow=='T' || chemUp=='T' && chemLow=='A' || chemUp=='G' && chemLow=='C'|| chemUp=='C' && chemLow=='G'){
+				if(x==upperLength-1) {
+					System.out.print("yeah you did it");
+					System.out.print("\n");
+					System.exit(0);
+				}
+				continue;
+			}
+		}
+    }
+}

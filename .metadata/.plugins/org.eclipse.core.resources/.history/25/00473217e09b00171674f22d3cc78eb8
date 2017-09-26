@@ -1,0 +1,367 @@
+package edu.cofc.csci230;
+  
+ 
+/**
+ * Singly LinkedList Data Structure
+ * 
+ * @author CSCI 230: Data Structures and Algorithms Fall 2017
+ *
+ * @param <AnyType>
+ */
+public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements List<AnyType> {
+     
+    // instance variables
+    private Node<AnyType> headNode = null;
+    private int size = 0;
+ 
+    /**
+     * Appends the specified element to the end of this list.
+     * 
+     * @param t
+     */
+    public void add( AnyType t) {
+         
+        addNode( new Node<AnyType>(t) );
+         
+    } // end add() method
+    
+    /**
+     * implementation for public add(AnyType t) method
+     * 
+     * @param t
+     */
+    private void addNode(Node<AnyType> t) {
+        
+        if ( isEmpty() ) headNode = t;
+        else getNode( size-1 ).setNextNode( t );
+         
+        size++;
+         
+    } // end addNote() method
+ 
+ 
+    /**
+     * Inserts the specified element at the specified position in this list.
+     * 
+     * @param index
+     * @param t
+     * @throws IndexOutOfBoundsException
+     */
+    public void add(int index, AnyType t) throws IndexOutOfBoundsException {
+         
+    		addNode( index, new Node<AnyType>(t) );
+         
+    } // end add() method
+    
+    /*
+     * 
+     * Implementation for public add(int index, AnyType t) method
+     *
+     * @param index
+     * @param t
+     * @throws IndexOutOfBoundsException
+     */
+    private void addNode(int index, Node<AnyType> t) throws IndexOutOfBoundsException {
+    		
+    		if(index<0 || index>=size)
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    		
+    		if(index==0) {
+    			t.setNextNode(getNode(0));
+    			headNode=t;
+    			size++;
+    			return;
+    		}
+    		if(index==size-1) {
+    			Node<AnyType> x = getNode(index-1);
+    			t.setNextNode(getNode(index));
+    			x.setNextNode(t);
+    			size++;
+    			return;
+    			
+    		}
+    		Node<AnyType> x = getNode(index-1);
+    		Node<AnyType> y = getNode(index);
+    		t.setNextNode(y);
+    		x.setNextNode(t);
+    		size++;
+    		return;
+    	/**
+         * -------------------------------------------
+         * TODO: You fully implement this method
+         * 
+         */
+     
+        
+        
+    } // end addNode() method
+ 
+    /**
+     * Replaces the element at the specified position in this list with the specified element.
+     * 
+     * @param index
+     * @param t
+     * @throws IndexOutOfBoundsException
+     */
+    public void set(int index, AnyType t) throws IndexOutOfBoundsException {
+         
+        setNode( index, new Node<AnyType>(t) );
+         
+    } // end set() method
+    
+    /**
+     * 
+     * Implementation for public set( int index, AnyType t ) method
+     *
+     * @param index
+     * @param t
+     * @throws IndexOutOfBoundsException
+     */
+    private void setNode( int index, Node<AnyType> t ) throws IndexOutOfBoundsException {
+    	
+    		if(index<0 || index>=size)
+    			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    		
+    		if(index==0) {
+    			Node<AnyType> x = getNode(index+1);
+    			t.setNextNode(x);
+    			headNode = t;
+
+    			return;
+    		}
+    		if(index==size-1) {
+    			Node<AnyType> x = getNode(index-1);
+    			t.setNextNode(null);
+    			x.setNextNode(t);
+    			
+    			return;
+    			
+    		}
+    		Node<AnyType> x = getNode(index-1);
+    		Node<AnyType> y = getNode(index+1);
+    		x.setNextNode(t);
+    		t.setNextNode(y);
+  
+    		return;
+    		/**
+         * -------------------------------------------
+         * TODO: You fully implement this method
+         * 
+         */
+     
+        
+    	
+    } // end setNode() method
+
+ 
+    /**
+     * Removes the element at the specified position in this list.
+     * 
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public AnyType remove( int index ) throws IndexOutOfBoundsException {
+    	
+    		return removeNode( index ).getData();
+    	
+    } // end remove() method
+    
+    /**
+     *
+     * Implementation for public remove( int index ) method
+     *
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    private Node<AnyType> removeNode( int index ) throws IndexOutOfBoundsException {
+		
+    		if(index<0 || index>=size)
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    		if(index==0) {
+    			Node<AnyType> n = getNode(index);
+    			headNode = n.getNextNode();
+    			size--;
+    			return n;
+    		}
+    		Node<AnyType> x = getNode(index-1);
+		Node<AnyType> y = getNode(index);
+		x.setNextNode(y.getNextNode());
+		size--;
+		return x;
+    		
+        /**
+         * -------------------------------------------
+         * TODO: You fully implement this method
+         * 
+         */
+         
+        
+         
+    } // end removeNode() method
+ 
+    /**
+     * Returns the element at the specified position in this list.
+     * 
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public AnyType get( int index ) throws IndexOutOfBoundsException {
+    		return getNode( index ).getData();
+    	
+    } // end get() method
+    
+    /**
+     *
+     * Implementation for public get(int index) method
+     * 
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    private Node<AnyType> getNode(int index) throws IndexOutOfBoundsException {
+		if(index<0 || index>=size)
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+    		if(index==0) {
+    			return headNode;
+    		}
+		Node<AnyType> temp = headNode;
+    		for(int i = 0; i<index; i++) {
+			temp = temp.getNextNode();
+		}
+        return temp;
+        /**
+         * -------------------------------------------
+         * TODO: You fully implement this method
+         * 
+         */
+         
+        
+         
+    } // end get() method
+ 
+    /**
+     * Returns the number of elements in this list. 
+     * 
+     * @return
+     */
+    public int size() {
+         
+        return size;
+         
+    } // end size() method
+ 
+    /**
+     * Returns true if this list contains no elements.
+     * 
+     * @return
+     */
+    public Boolean isEmpty() {
+         
+        return ( size == 0 ) ? true : false;
+         
+    } // end isEmpty() method
+     
+     
+    /**
+     * Removes all of the elements from this list.
+     * 
+     */
+    public void clear() {
+    		
+    		headNode=null;
+    		this.size=0;
+    		
+    		/**
+         * -------------------------------------------
+         * TODO: You fully implement this method
+         * 
+         */
+
+         
+    } // end clear method
+     
+     
+    /**
+     * 
+     * @param args
+     */
+    public static void main( String[] args ) {
+        
+    // Create a new singly linked list object
+        
+    		SinglyLinkedList<Integer> hwList = new SinglyLinkedList<Integer>();
+        
+    	// Test Case 1: Add 4 elements to a list, print out the size of the list
+        System.out.print("Test case 1:\n");
+    		hwList.add(1);
+        hwList.add(2);
+        hwList.add(3);
+        hwList.add(4);
+        
+        System.out.println("The list size is: " + hwList.size());
+        
+    // Test Case 2: Clear the list out completely
+        System.out.print("\nTest case 2:\n");
+        hwList.clear();
+        System.out.println("The list size after clearing it out is: " + hwList.size());
+
+    // Test Case 3: Add nodes back into list and print out the structure of linked list
+        System.out.print("\nTest case 3:\n");        
+        hwList.add(1);
+        hwList.add(2);
+        hwList.add(3);
+        hwList.add(4);
+        
+        for(int i = 0; i<hwList.size() ; i++)
+        		System.out.println(hwList.getNode(i)+"\n");
+        
+    	// Test Case 4: Add in another node onto the end of the linked list using the add method, then print
+    //              the size of the list and it's contents
+        
+        System.out.print("Test case 4:\n");
+        hwList.add(99);
+        for(int i = 0; i<hwList.size() ; i++)
+    			System.out.println(hwList.get(i));
+        
+        System.out.println("The list size is: " + hwList.size());
+        
+    // Test Case 5: Check that the nodes are referencing correctly, the last node in particular
+        System.out.print("\nTest case 5:\n");
+        for(int i = 0; i<hwList.size() ; i++)
+			System.out.println(hwList.getNode(i));
+
+    	// Test Case 6: Check that a node can be added a specific index, then print out the contents
+        System.out.print("Test case 6:\n");
+        hwList.add(2, 50);
+        for(int i = 0; i<hwList.size() ; i++)
+			System.out.println(hwList.get(i));
+    
+    // Test Case 7: Remove a node from the list at a specific index
+        System.out.print("\nTest case 7:\n");        
+        hwList.remove(3);
+        for(int i = 0; i<hwList.size() ; i++)
+			System.out.println(hwList.get(i));
+        
+    // Test Case 8:
+        System.out.print("\nTest case 8:\n");
+
+    // Test Case 9:
+        System.out.print("\nTest case 9:\n");
+
+    	// Test Case 10:
+        System.out.print("\nTest case 10:\n");
+     
+        
+    		/**
+         * -------------------------------------------
+         * TODO: You put your test cases here
+         * 
+         */
+         
+         
+    } // end main() method
+  
+} // end SinglyLinkedList class definition
