@@ -221,15 +221,19 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
     	int cap = capacity;            
 		
    		AnyType tempArr[] = (AnyType[]) new Comparable[ cap ];
-
-		while(i<cap/2) {
-			tempArr[i] = array[i];
-			capacity = capacity-1;
-			if(capacity<size) { size--; }
-			i++;
-		}
-		
-		array = tempArr;
+   		
+   		if(capacity==INITIAL_CAPACITY){
+   			return;
+   		}
+   		else {
+   			while(i<cap/2) {
+   				tempArr[i] = array[i];
+   				capacity = capacity-1;
+				if(capacity<size) { size--; }
+				i++;
+   			}
+   		}
+   			array = tempArr;
         /**
          * -------------------------------------------
          * TODO: You fully implement this method
