@@ -56,22 +56,13 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
     		if(size>=capacity)
     			grow();
 
-    		for(int i=size-1; i>=index; i--) {
-    			//if(i==size-1)
-    				
+    		for(int i=size-1; i>=index; i--) {		
     			array[i+1] = array[i];
    
     		}
     		array[index] = t;
     		
     		size++;
-        /**
-         * -------------------------------------------
-         * TODO: You fully implement this method
-         * 
-         */
-        
-        
         
     } // end add() method
  
@@ -109,18 +100,6 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
 		size--;
     		return array[index];
          
-        /**
-         * -------------------------------------------
-         * TODO: You fully implement this method
-         * 
-         * Requirement - you must use loops (i.e. may not use
-         * System.arraycopy, or any other array copy operation 
-         * available in the Java API) to perform left or right
-         * shift operations
-         * 
-         */
-         
-        
          
     } // end remove() method
  
@@ -185,17 +164,18 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
      * 
      */
     private void grow() {	
-    	int i = 0;
-    	int cap = capacity;            
+    		int i = 0;
+    		int cap = capacity;            
     		
         AnyType tempArr[] = (AnyType[]) new Comparable[ cap*2 ];
 
-    	while(i<cap) {
-    		tempArr[i] = array[i];
-   			capacity = capacity+1;
-   			i++;
+        while(i<cap) {
+    			tempArr[i] = array[i];
+    			capacity = capacity+1;
+    			i++;
    		}
    		array = tempArr;
+   		
     		//System.out.print(tempArr.length+"\n");
     		/**
          * -------------------------------------------
@@ -233,7 +213,8 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
 				i++;
    			}
    		}
-   			array = tempArr;
+   		array = tempArr;
+   		
         /**
          * -------------------------------------------
          * TODO: You fully implement this method
@@ -361,7 +342,7 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
         System.out.print(arrList.toString()+"\n");
         System.out.print("The capacity of the ArrayList is: "+arrList.capacity+"\n");
         
-    // Test Case 9: Show the change in list size as the list capacity is decreased
+    // Test Case 9: Show the change in list size as the list capacity is decreased and held at a miniumum of 10
         System.out.print("\nTest case 9:\n");
         
         System.out.print(arrList.toString()+"\n");
@@ -383,7 +364,7 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
         System.out.println(arrList.toString()+"\n");
         System.out.println("The value at index 2 is "+arrList.get(2));
         System.out.println("The value at index 0 is "+arrList.get(0));
-        System.out.println("The value at index 4 is "+arrList.get(4));
+        System.out.println("The value at index 6 is "+arrList.get(6));
        
 
         
