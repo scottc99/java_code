@@ -40,6 +40,13 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	 */
 	public void add(AnyType t) throws NullPointerException {
 		
+		if(list.size()==0) {
+			list.add(t);
+		}
+		else {
+			list.add(0,t);
+		}
+		
 		/**
          * -------------------------------------------
          * TODO: You fully implement this method
@@ -65,6 +72,14 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	 * @throws NoSuchElementException - if this queue is empty
 	 */
 	public AnyType remove() throws NoSuchElementException {
+		int size = list.size();
+		if(size==0) {
+			throw new NoSuchElementException("There is no elements in the list");
+		}
+		
+		AnyType temp = list.get(size-1);
+		list.remove(size-1);
+		return temp;
 		
 		/**
          * -------------------------------------------
@@ -87,6 +102,13 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	 * @return the head of this queue, or null if this queue is empty
 	 */
 	public AnyType peek() {
+		int size = list.size();
+		if(size==0) {
+			throw new NoSuchElementException("There is no elements in the list");
+		}
+		
+		AnyType temp = list.get(size-1);
+		return temp;
 		
 		/**
          * -------------------------------------------
@@ -107,6 +129,16 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	 */
 	public static void main(String[] args) {
 		
+		SemiConstantTimeQueue<String> quList = new SemiConstantTimeQueue<String>();
+		
+		quList.add("First");
+		quList.add("Second");
+		quList.add("Third");
+		
+		System.out.print(quList.peek()+"\n");
+		
+		quList.remove();
+		System.out.print(quList.peek());
 		/**
          * -------------------------------------------
          * TODO: You put your test cases here

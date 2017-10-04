@@ -29,6 +29,12 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 */
 	public void push(AnyType t) {
 		
+		if(list.size()==0) {
+			list.add(t);
+		}
+		else {
+			list.add(0, t);
+		}
 		/**
          * -------------------------------------------
          * TODO: You fully implement this method
@@ -50,6 +56,11 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 * @throws EmptyStackException - if this stack is empty.
 	 */
 	public AnyType pop() throws EmptyStackException {
+		int size = list.size();
+		AnyType temp = list.get(0);
+		
+		list.remove(0);
+		return temp;
 		
 		/**
          * -------------------------------------------
@@ -72,6 +83,11 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 * @throws EmptyStackException  - if this stack is empty.
 	 */
 	public AnyType peek() throws EmptyStackException {
+		int size = list.size();
+		AnyType temp = list.get(0);
+		
+		return temp;
+		
 		
 		/**
          * -------------------------------------------
@@ -92,6 +108,20 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 */
 	public static void main( String[] args ) {
 		
+		ConstantTimeStack<String> hwList = new ConstantTimeStack<String>();
+		
+		hwList.push("First");
+		hwList.push("Second");
+		hwList.push("Third");
+		
+		System.out.print(hwList.peek()+"\n");
+		
+		hwList.pop();
+		System.out.print(hwList.peek()+"\n");
+		
+		hwList.pop();
+		System.out.print(hwList.peek()+"\n");
+
 		/**
          * -------------------------------------------
          * TODO: You put your test cases here
