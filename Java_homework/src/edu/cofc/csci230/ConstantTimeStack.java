@@ -1,6 +1,7 @@
 package edu.cofc.csci230;
 
 import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 /**
  * A LIFO stack that has constant time complexity O(1) for
@@ -28,12 +29,12 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 * @param t the item to be pushed onto this stack.
 	 */
 	public void push(AnyType t) {
-		
-		if(list.size()==0) {
+		int size = list.size();
+		if(size==0) {
 			list.add(t);
 		}
 		else {
-			list.add(0, t);
+			list.add(size-1, t);
 		}
 		/**
          * -------------------------------------------
@@ -57,9 +58,12 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 */
 	public AnyType pop() throws EmptyStackException {
 		int size = list.size();
-		AnyType temp = list.get(0);
+		if(size==0) {
+			throw new EmptyStackException();
+		}
+		AnyType temp = list.get(size-1);
 		
-		list.remove(0);
+		list.remove(size-1);
 		return temp;
 		
 		/**
@@ -84,8 +88,11 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	 */
 	public AnyType peek() throws EmptyStackException {
 		int size = list.size();
-		AnyType temp = list.get(0);
+		if(size==0) {
+			throw new EmptyStackException();
+		}
 		
+		AnyType temp = list.get(size-1);
 		return temp;
 		
 		
@@ -109,25 +116,53 @@ public class ConstantTimeStack<AnyType extends Comparable<AnyType>> implements S
 	public static void main( String[] args ) {
 		
 		ConstantTimeStack<String> hwList = new ConstantTimeStack<String>();
-		
-		hwList.push("First");
-		hwList.push("Second");
-		hwList.push("Third");
-		
-		System.out.print(hwList.peek()+"\n");
-		
-		hwList.pop();
-		System.out.print(hwList.peek()+"\n");
-		
-		hwList.pop();
-		System.out.print(hwList.peek()+"\n");
 
-		/**
-         * -------------------------------------------
-         * TODO: You put your test cases here
-         * 
-         */
-		
+	// Test Case 1: Using peek() method when stack is empty
+        System.out.print("Test case 1:\n");
+    		
+        try {
+        		hwList.peek();
+        }catch (EmptyStackException e) {
+        		System.out.print("The stack is empty!\n");
+        }
+        
+    // Test Case 2: Using pop() method when stack is empty
+        System.out.print("\nTest case 2:\n");
+        try {
+			hwList.pop();
+        	}catch (EmptyStackException e) {
+			System.out.print("The stack is empty! No elements to remove\n");
+        	}
+        
+    // Test Case 3: Add elements to the empty stack
+        System.out.print("\nTest case 3:\n");     
+        hwList.push("First");
+        hwList.push("Second");
+        hwList.push("Third");
+        hwList.push("Fourth");
+        System.out.print(hwList.peek()+"\n");
+        hwList.pop();        
+        System.out.print(hwList.peek()+"\n");
+        hwList.pop();        
+        System.out.print(hwList.peek());
+    	// Test Case 4: 
+        System.out.print("\nTest case 4:\n");
+        
+    // Test Case 5: 
+        System.out.print("Test case 5:\n");
+
+    	// Test Case 6: 
+        System.out.print("\nTest case 6:\n");
+        
+    // Test Case 7: 
+        System.out.print("\nTest case 7:\n");        
+
+    // Test Case 8: 
+        System.out.print("\nTest case 8:\n");
+       
+    // Test Case 9:
+        System.out.print("\nTest case 9:\n");
+        
 		
 		
 		

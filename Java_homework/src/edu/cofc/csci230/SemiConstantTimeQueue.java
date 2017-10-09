@@ -74,7 +74,7 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	public AnyType remove() throws NoSuchElementException {
 		int size = list.size();
 		if(size==0) {
-			throw new NoSuchElementException("There is no elements in the list");
+			throw new NoSuchElementException("There are no elements in the list");
 		}
 		
 		AnyType temp = list.get(size-1);
@@ -104,7 +104,7 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 	public AnyType peek() {
 		int size = list.size();
 		if(size==0) {
-			throw new NoSuchElementException("There is no elements in the list");
+			throw new NoSuchElementException("There are no elements in the list");
 		}
 		
 		AnyType temp = list.get(size-1);
@@ -139,12 +139,34 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 		
 		quList.remove();
 		System.out.print(quList.peek());
-		/**
-         * -------------------------------------------
-         * TODO: You put your test cases here
-         * 
-         */
 		
+	// Test Case 1: 
+        System.out.print("Test case 1:\n");
+    		
+    // Test Case 2: 
+        System.out.print("\nTest case 2:\n");
+        
+    // Test Case 3: 
+        System.out.print("\nTest case 3:\n");        
+       
+    	// Test Case 4: 
+        System.out.print("\nTest case 4:\n");
+        
+    // Test Case 5: 
+        System.out.print("Test case 5:\n");
+
+    	// Test Case 6: 
+        System.out.print("\nTest case 6:\n");
+        
+    // Test Case 7: 
+        System.out.print("\nTest case 7:\n");        
+
+    // Test Case 8: 
+        System.out.print("\nTest case 8:\n");
+       
+    // Test Case 9:
+        System.out.print("\nTest case 9:\n");
+        
 		
 
 	} // end main() method
