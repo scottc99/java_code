@@ -1,5 +1,6 @@
 package edu.cofc.csci230;
 
+import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 /**
@@ -131,44 +132,58 @@ public class SemiConstantTimeQueue<AnyType extends Comparable<AnyType>> implemen
 		
 		SemiConstantTimeQueue<String> quList = new SemiConstantTimeQueue<String>();
 		
-		quList.add("First");
-		quList.add("Second");
-		quList.add("Third");
-		
-		System.out.print(quList.peek()+"\n");
-		
-		quList.remove();
-		System.out.print(quList.peek());
-		
-	// Test Case 1: 
+	// Test Case 1: Using peek() method when queue is empty
         System.out.print("Test case 1:\n");
-    		
-    // Test Case 2: 
+        try {
+    			quList.peek();
+        }catch (NoSuchElementException e) {
+    			System.out.print("The queue is empty!\n");
+        }
+    
+    // Test Case 2: Using remove() method when queue is empty
         System.out.print("\nTest case 2:\n");
+        try {
+			quList.remove();
+        	}catch (NoSuchElementException e) {
+			System.out.print("The queue is empty! No elements to remove\n");
+        	}
         
-    // Test Case 3: 
+    // Test Case 3: Add elements to the queue
         System.out.print("\nTest case 3:\n");        
-       
-    	// Test Case 4: 
+        quList.add("First");
+        quList.add("Second");
+        quList.add("Third");
+        quList.add("Fourth");
+        quList.add("5th");
+        
+        System.out.print(quList.peek()+"\n");
+        
+    	// Test Case 4: Peek at the first element in queue, then remove element and peek again
         System.out.print("\nTest case 4:\n");
-        
-    // Test Case 5: 
-        System.out.print("Test case 5:\n");
+        System.out.print(quList.peek()+"\n");
+        quList.remove();
+        System.out.print(quList.peek()+"\n");
 
-    	// Test Case 6: 
+    // Test Case 5: Remove one more element and use peek() method
+        System.out.print("\nTest case 5:\n");
+        quList.remove();
+        System.out.print(quList.peek()+"\n");
+
+    	// Test Case 6: Add several more elements to queue, then peek at the first element
         System.out.print("\nTest case 6:\n");
+        quList.add("string1");
+        quList.add("string2");
+        quList.add("string3");
+        quList.add("string4");
+        System.out.print(quList.peek()+"\n");
         
-    // Test Case 7: 
+    // Test Case 7: Remove 3 elements from the queue and use the peek method
         System.out.print("\nTest case 7:\n");        
-
-    // Test Case 8: 
-        System.out.print("\nTest case 8:\n");
-       
-    // Test Case 9:
-        System.out.print("\nTest case 9:\n");
+        quList.remove();
+        quList.remove();
+        quList.remove();
+        System.out.print(quList.peek()+"\n");
         
-		
-
 	} // end main() method
 
 } // end SemiConstantTimeQueue class definition
