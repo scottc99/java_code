@@ -74,5 +74,14 @@ public interface List <AnyType> {
 	 * 
 	 */
 	public void clear();
+	
+	/**
+	 * Swap the list values at index position i and j.
+	 * 
+	 * @param i
+	 * @param j
+	 * @throws IndexOutOfBoundsException
+	 */
+	public void swap( int i, int j )  throws IndexOutOfBoundsException;
 
 } // end List interface definition
