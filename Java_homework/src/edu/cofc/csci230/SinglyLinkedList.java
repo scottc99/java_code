@@ -235,12 +235,14 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
      */
     public void swap( int i, int j )  throws IndexOutOfBoundsException {
         
-        /**
-         * -------------------------------------------
-         * TODO: You fully implement this method
-         * 
-         */
+        Node<AnyType> node1 = getNode(i);
+        Node<AnyType> node2 = getNode(j);
         
+        AnyType data1 = node1.getData();
+        AnyType data2 = node2.getData();
+        
+        node1.setData(data2);
+        node2.setData(data1);
         
         
     } // end swap() method
@@ -281,12 +283,15 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
      */
     public static void main( String[] args ) {
                 
-        // -------------------------------------
-        // Put your test cases here
-        // -------------------------------------
+        SinglyLinkedList<Integer> hwList = new SinglyLinkedList<Integer>();
+        	for(int i=6; i>0; i--) {
+        		hwList.add(i);
+        	}
+        	
+        	System.out.print(hwList.toString()+"\n");
         
-        
-
+        	Utils.selectionSort(hwList);
+        	System.out.print(hwList.toString());
                 
     } // end main() method
     

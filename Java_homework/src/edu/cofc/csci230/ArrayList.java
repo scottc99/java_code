@@ -227,13 +227,10 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
      */
     public void swap( int i, int j )  throws IndexOutOfBoundsException {
         
-        /**
-         * -------------------------------------------
-         * TODO: You fully implement this method
-         * 
-         */
+        AnyType temp = array[i];
         
-        
+        array[i] = array[j];
+        array[j] = temp;
         
         
     } // end swap() method
@@ -273,13 +270,21 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
      */
     public static void main( String[] args ) {
         
-        /**
-         * -------------------------------------------
-         * TODO: Put your test cases here
-         * 
-         */
-        
-        
+        ArrayList<Integer> hwList = new ArrayList<Integer>();
+        for(int i=6; i>0; i--) {
+    			hwList.add(i);
+        }
+        hwList.add(0,99);
+        hwList.add(0,99);
+        hwList.add(43);
+        hwList.add(87);
+        hwList.add(10);
+        hwList.add(13);
+        hwList.add(48);
+
+        System.out.print(hwList.toString()+"\n");
+        Utils.insertionSort(hwList);
+    		System.out.print(hwList.toString());
         
     } // end main() method
     
