@@ -284,7 +284,7 @@ public class ArrayList<AnyType extends Comparable<AnyType>> implements List<AnyT
 
         System.out.print(hwList.toString()+"\n");
         Utils.insertionSort(hwList);
-    		System.out.print(hwList.toString());
+    	System.out.print(hwList.toString());
         
     } // end main() method
     

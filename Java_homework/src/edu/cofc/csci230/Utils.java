@@ -70,7 +70,7 @@ public class Utils {
 	public static <AnyType extends Comparable> void insertionSort( List<AnyType> list ) throws IndexOutOfBoundsException {
 		
 		int size = list.size();
-		for(int i=1; i<size-1; i++) {
+		for(int i=1; i<size; i++) {
 			int j = i-1;
 			AnyType temp = list.get(i);
 			while(j>=0 && temp.compareTo(list.get(j))<0) {
