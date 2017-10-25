@@ -275,8 +275,34 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
 		return buffer.toString();
 
 	} // end toString()
+	
+	/**
+	 * For debugging purposes: the sequel :)
+	 * 
+	 * 
+	 */
+	public String stringArr() {
 
+		StringBuffer buffer = new StringBuffer();
 
+		buffer.append( String.format( "Size=%d, A = [ ", size ) );
+
+		if ( !isEmpty() ) {
+
+			for ( int i=0; i<size-1; i++ ) {
+				buffer.append( String.format( "%s, ", get(i) ) );    
+			}
+
+			buffer.append( String.format( "%s ]", get(size-1 ) ) );
+
+		} else {
+
+			buffer.append( "] " );
+		}
+
+		return buffer.toString();
+
+	}
 	/**
 	 * 
 	 * @param args
@@ -289,15 +315,12 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
 		hwList.add("Second");
 		hwList.add("Third");
 		hwList.add("Fourth");
-
-		for(int i=0; i<hwList.size(); i++){
-			System.out.print(hwList.get(i)+"\n");
-		}
+		hwList.add("First");
+		
+		System.out.print(hwList.stringArr()+"\n");
 		Utils.insertionSort(hwList);
-		for(int i=0; i<hwList.size(); i++){
-			System.out.print(hwList.get(i)+"\n");
-		}
-
+		System.out.print(hwList.stringArr());
+		
 	} // end main() method
 
 } // end SinglyLinkedList class definition
