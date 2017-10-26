@@ -275,7 +275,7 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
 		return buffer.toString();
 
 	} // end toString()
-	
+
 	/**
 	 * For debugging purposes: the sequel :)
 	 * 
@@ -309,17 +309,219 @@ public class SinglyLinkedList<AnyType extends Comparable<AnyType>> implements Li
 	 */
 	public static void main( String[] args ) {
 
-		SinglyLinkedList<String> hwList = new SinglyLinkedList<String>();
+		SinglyLinkedList<Integer> singList = new SinglyLinkedList<Integer>();
+		SinglyLinkedList<String> singStrList = new SinglyLinkedList<String>();
 
-		hwList.add("First");
-		hwList.add("Second");
-		hwList.add("Third");
-		hwList.add("Fourth");
-		hwList.add("First");
+		//////////////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////// SELECTION SORT /////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////
+		System.out.print("|< SELECTION SORT >|\n\n");
+
+		// Test case 1: Sorting with a blank list
+		System.out.print("Test Case 1:\n");
+
+		System.out.print(singList.toString()+"\n");
+		Utils.selectionSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+
+		// Test case 2: Sorting with duplicates
+		System.out.print("Test Case 2:\n");
+
+		singList.add(45);
+		singList.add(6);
+		singList.add(68);
+		singList.add(99);
+		singList.add(17);
+		singList.add(17);
+		singList.add(75);
+		singList.add(68);
+		singList.add(68);
+		singList.add(6);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.selectionSort(singList);
+		System.out.print(singList.toString()+"\n\n");
 		
-		System.out.print(hwList.stringArr()+"\n");
-		Utils.insertionSort(hwList);
-		System.out.print(hwList.stringArr());
+		singList.clear();
+		
+		// Test case 3: Sorting with no duplicates
+		System.out.print("Test Case 3:\n");
+
+		singList.add(45);
+		singList.add(6);
+		singList.add(68);
+		singList.add(99);
+		singList.add(-4);
+		singList.add(0);
+		singList.add(17);
+		singList.add(75);
+		singList.add(40);
+		singList.add(200);
+		singList.add(-15);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.selectionSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+
+		singList.clear();
+
+		// Test case 4: Sorting with no duplicates
+		System.out.print("Test Case 4:\n");
+
+		singStrList.add("Sometimes");
+		singStrList.add("I");
+		singStrList.add("Code");
+		singStrList.add("And");
+		singStrList.add("Feed");
+		singStrList.add("The");
+		singStrList.add("Horses");
+
+		System.out.print(singStrList.stringArr()+"\n");
+		Utils.selectionSort(singStrList);
+		System.out.print(singStrList.stringArr()+"\n\n");
+
+		singStrList.clear();
+
+		//////////////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////// BUBBLE SORT ////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////
+		System.out.print("|< BUBBLE SORT >|\n\n");
+
+		// Test case 1: Sorting with a blank list
+		System.out.print("Test Case 1:\n");
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+
+		// Test case 2: Sorting with duplicates
+		System.out.print("Test Case 2:\n");
+
+		singList.add(30);
+		singList.add(6);
+		singList.add(-100);
+		singList.add(390);
+		singList.add(56);
+		singList.add(30);
+		singList.add(330);
+		singList.add(6);
+		singList.add(-54);
+		singList.add(-100);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+		
+		singList.clear();
+		
+		// Test case 3: Sorting with no duplicates
+		System.out.print("Test Case 3:\n");
+
+		singList.add(30);
+		singList.add(6);
+		singList.add(-16);
+		singList.add(390);
+		singList.add(56);
+		singList.add(34);
+		singList.add(246);
+		singList.add(3);
+		singList.add(-50);
+		singList.add(-99);
+		singList.add(73);
+		singList.add(-15);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+		
+		singList.clear();
+		
+		// Test case 4: Sorting with no duplicates
+		System.out.print("Test Case 4:\n");
+
+		singStrList.add("But");
+		singStrList.add("Wait");
+		singStrList.add("I");
+		singStrList.add("Don't");
+		singStrList.add("Have");
+		singStrList.add("A");
+		singStrList.add("Horse");
+
+		System.out.print(singStrList.stringArr()+"\n");
+		Utils.selectionSort(singStrList);
+		System.out.print(singStrList.stringArr()+"\n\n");
+		
+		singStrList.clear();
+
+		//////////////////////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////// INSERTION SORT /////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////
+		System.out.print("|< INSERTION SORT >|\n\n");
+
+		// Test case 1: Sorting with a blank list
+		System.out.print("Test Case 1:\n");
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+
+		// Test case 2: Sorting with duplicates
+		System.out.print("Test Case 2:\n");
+
+		singList.add(56);
+		singList.add(46);
+		singList.add(-10);
+		singList.add(370);
+		singList.add(44);
+		singList.add(66);
+		singList.add(370);
+		singList.add(-10);
+		singList.add(46);
+		singList.add(-100);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+		
+		singList.clear();
+		
+		// Test case 3: Sorting with no duplicates
+		System.out.print("Test Case 3:\n");
+
+		singList.add(30);
+		singList.add(9);
+		singList.add(-56);
+		singList.add(870);
+		singList.add(99);
+		singList.add(-34);
+		singList.add(-246);
+		singList.add(31);
+		singList.add(-50);
+		singList.add(-60);
+		singList.add(73);
+		singList.add(15);
+
+		System.out.print(singList.toString()+"\n");
+		Utils.bubbleSort(singList);
+		System.out.print(singList.toString()+"\n\n");
+		
+		singList.clear();
+
+		// Test case 4: Sorting with no duplicates
+		System.out.print("Test Case 4:\n");
+
+		singStrList.add("Oh");
+		singStrList.add("Wait");
+		singStrList.add("It's");
+		singStrList.add("A");
+		singStrList.add("Mini");
+		singStrList.add("Horse");
+
+		System.out.print(singStrList.stringArr()+"\n");
+		Utils.selectionSort(singStrList);
+		System.out.print(singStrList.stringArr()+"\n\n");
+
+		singStrList.clear();
 		
 	} // end main() method
 

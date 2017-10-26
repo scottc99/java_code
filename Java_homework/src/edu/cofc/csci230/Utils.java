@@ -27,9 +27,10 @@ public class Utils {
 	 */
 	public static <AnyType extends Comparable> void selectionSort( List<AnyType> list ) throws IndexOutOfBoundsException {
 		
-		int size = list.size();
+		int size = list.size();		
 		for(int i=0; i<size-1; i++) {
 			int min = i;
+			
 			for(int j=i+1; j<size; j++) {
 				int result = list.get(j).compareTo(list.get(min));
 				if(result<0) {
@@ -51,6 +52,7 @@ public class Utils {
 		
 		int size = list.size();
 		for(int i=0; i<size-1; i++) {
+			
 			for(int j=0; j<size-1-i; j++) {
 				int result = list.get(j+1).compareTo(list.get(j));
 				if(result<0) {
@@ -73,6 +75,7 @@ public class Utils {
 		for(int i=1; i<size; i++) {
 			int j = i-1;
 			AnyType temp = list.get(i);
+			
 			while(j>=0 && temp.compareTo(list.get(j))<0) {
 				list.set(j+1, list.get(j));
 				j = j-1;
